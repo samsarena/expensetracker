@@ -1,12 +1,19 @@
+import { useState } from "react";
 import { categories } from "../App";
-function ExpenseTable({ data }) {
+function ExpenseTable({ listData }) {
+    let [filteredData, setFilteredData] = useState(listData);
     const filterHandler = (e) => {
-        console.log(e);
+        if(e.value){
+            setFilteredData(listData.filter((item) => {
+                return item.category === e.value;
+            }));
+        } else {
+            setFilteredData(listData);
+        }
     }
     return (
         <>
-            <p>&nbsp;</p>
-            <hr />
+            <h2 className="display-6 mb-3">Expense Lists</h2>
             <select className="form-select" name="category" id="input-category" onChange={(e) => filterHandler(e.target)}>
                 <option value="">Select Category</option>
                 {categories.map((item) => {
@@ -23,7 +30,7 @@ function ExpenseTable({ data }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((item) => {
+                    {filteredData.map((item) => {
                         return (
                             <tr key={item.id}>
                                 <td>{item.description}</td>

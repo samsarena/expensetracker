@@ -6,16 +6,12 @@ export const categories = ["Grocery", "Utilities", "Entertainment"];
 
 function App() {
   let [listData, setListData] = useState([]);
-  useEffect(()=>{
-    console.log("PARENT", listData);
-  }, [listData]);
-
   return (
     <>
       <div className="container">
+        <Form setListData={setListData} listData={listData} />
         <div className="row">
-          <Form setListData={setListData} listData={listData} />          
-          <ExpenseTable data={listData} />
+          <ExpenseTable listData={listData} />
         </div>
       </div>
     </>
