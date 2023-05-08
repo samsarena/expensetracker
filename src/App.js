@@ -9,6 +9,7 @@ function App() {
   useEffect(()=>{
     console.log("PARENT", listData);
   }, [listData]);
+  
   return (
     <>
       <div className="container">
