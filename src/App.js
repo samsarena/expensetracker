@@ -9,13 +9,15 @@ function App() {
   useEffect(()=>{
     console.log("PARENT", listData);
   }, [listData]);
-  let x = "Ashis";
   return (
     <>
       <div className="container">
         <div className="row">
-          <Form setListData={setListData} />
+          <Form setListData={setListData} listData={listData} />          
           <ExpenseTable data={listData} />
+          {/* {listData.map((item)=>{
+            return <p>{item}</p>
+          })} */}
         </div>
       </div>
     </>
